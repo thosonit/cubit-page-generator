@@ -18,6 +18,8 @@ open class GeneratePageAction : AnAction()/*, GeneratePageDialog.Listener*/ {
     override fun actionPerformed(e: AnActionEvent) {
 //        val dialog = GeneratePageDialog(this)
 //        dialog.show()
+        val generators = BlocGeneratorFactory.getBlocGenerators("home", true)
+        generate(generators)
     }
 
 //    override fun onGenerateBlocClicked(pageName: String?) {
@@ -26,7 +28,13 @@ open class GeneratePageAction : AnAction()/*, GeneratePageDialog.Listener*/ {
 //            generate(generators)
 //        }
 //    }
-
+    override fun update(e: AnActionEvent) {
+        e.dataContext.let {
+            this.dataContext = it
+            val presentation = e.presentation
+            presentation.isEnabled = true
+        }
+    }
     protected fun generate(mainSourceGenerators: List<BlocGenerator>) {
         val project = CommonDataKeys.PROJECT.getData(dataContext)
         val view = LangDataKeys.IDE_VIEW.getData(dataContext)
