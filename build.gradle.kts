@@ -17,7 +17,7 @@ intellij {
     version.set("2021.3")
     type.set("IC") // Target IDE Platform
 
-    plugins.set(listOf(/* Plugin Dependencies */))
+    plugins.set(listOf("com.intellij.java"))
 }
 
 tasks {
@@ -44,4 +44,14 @@ tasks {
     publishPlugin {
         token.set(System.getenv("PUBLISH_TOKEN"))
     }
+}
+
+
+apply(plugin = "org.jetbrains.intellij")
+apply(plugin = "java")
+apply(plugin = "kotlin")
+apply(plugin = "idea")
+
+dependencies {
+    implementation("com.fleshgrinder.kotlin:case-format:0.2.0")
 }
