@@ -5,7 +5,7 @@
 
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
-    <name>NWSFlutter</name>
+    <name>Page Cubit Generator</name>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
     <vendor email="thoson.it@gmail.com" url="https://github.com/thoson-it">thoson.it</vendor>
@@ -30,11 +30,11 @@
 
     </extensions>
     <actions>
-        <action id="it.thoson.nwsflutter.actions.GeneratePageAction"
-                class="it.thoson.nwsflutter.actions.GeneratePageAction"
-                text="Create FlutterBloc Page"
-                icon="AllIcons.FileTypes.AddAny"
-                description="Create FlutterBloc Page">
+        <action id="it.thoson.pagecubit.actions.GeneratePageAction"
+                class="it.thoson.pagecubit.actions.GeneratePageAction"
+                text="Page+Cubit"
+                icon="/icons/icon.png"
+                description="Page+Cubit">
             <add-to-group group-id="NewGroup" anchor="first"/>
         </action>
     </actions>

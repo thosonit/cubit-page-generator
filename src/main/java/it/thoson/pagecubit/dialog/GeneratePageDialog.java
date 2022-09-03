@@ -1,4 +1,4 @@
-package it.thoson.nwsflutter.dialog;
+package it.thoson.pagecubit.dialog;
 
 import com.intellij.openapi.ui.DialogWrapper;
 import org.jetbrains.annotations.Nullable;

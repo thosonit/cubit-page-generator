@@ -1,6 +1,6 @@
-package it.thoson.nwsflutter.generator.components
+package it.thoson.pagecubit.generator.components
 
-import it.thoson.nwsflutter.generator.BlocGenerator
+import it.thoson.pagecubit.generator.BlocGenerator
 
 class BlocStateGenerator(
     name: String, useEquatable: Boolean

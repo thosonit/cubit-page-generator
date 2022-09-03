@@ -1,4 +1,4 @@
-package it.thoson.nwsflutter.actions
+package it.thoson.pagecubit.actions
 
 import com.fleshgrinder.extensions.kotlin.toLowerSnakeCase
 import com.intellij.lang.java.JavaLanguage
@@ -6,16 +6,13 @@ import com.intellij.openapi.actionSystem.*
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.command.CommandProcessor
 import com.intellij.openapi.project.Project
-import com.intellij.openapi.vfs.VfsUtil
-import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.PsiDirectory
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.psi.PsiFileFactory
-import com.intellij.psi.impl.file.PsiDirectoryFactory
-import it.thoson.nwsflutter.dialog.GeneratePageDialog
-import it.thoson.nwsflutter.generator.CubitGenerator
-import it.thoson.nwsflutter.generator.CubitGeneratorFactory
-import it.thoson.nwsflutter.generator.components.StuffGenerator
+import it.thoson.pagecubit.dialog.GeneratePageDialog
+import it.thoson.pagecubit.generator.CubitGenerator
+import it.thoson.pagecubit.generator.CubitGeneratorFactory
+import it.thoson.pagecubit.generator.components.StuffGenerator
 
 open class GeneratePageAction : AnAction(), GeneratePageDialog.Listener {
 

@@ -1,1 +1,1 @@
-rootProject.name = "NWSFlutter"
+rootProject.name = "PageCubitGenerator"

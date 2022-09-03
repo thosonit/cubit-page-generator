@@ -1,6 +1,6 @@
-package it.thoson.nwsflutter.generator.components
+package it.thoson.pagecubit.generator.components
 
-import it.thoson.nwsflutter.generator.CubitGenerator
+import it.thoson.pagecubit.generator.CubitGenerator
 
 class CubitStateGenerator(
     name: String, useEquatable: Boolean
