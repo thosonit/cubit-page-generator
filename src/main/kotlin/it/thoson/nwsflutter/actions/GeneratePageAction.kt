@@ -8,26 +8,26 @@ import com.intellij.psi.PsiDirectory
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.psi.PsiFileFactory
 import com.intellij.lang.java.JavaLanguage
+import it.thoson.nwsflutter.dialog.GeneratePageDialog
 import it.thoson.nwsflutter.generator.BlocGenerator
 import it.thoson.nwsflutter.generator.BlocGeneratorFactory
 
-open class GeneratePageAction : AnAction()/*, GeneratePageDialog.Listener*/ {
+open class GeneratePageAction : AnAction(), GeneratePageDialog.Listener {
 
     private lateinit var dataContext: DataContext
 
     override fun actionPerformed(e: AnActionEvent) {
-//        val dialog = GeneratePageDialog(this)
-//        dialog.show()
-        val generators = BlocGeneratorFactory.getBlocGenerators("home", true)
-        generate(generators)
+        val dialog = GeneratePageDialog(this)
+        dialog.show()
     }
 
-//    override fun onGenerateBlocClicked(pageName: String?) {
-//        pageName?.let { name ->
-//            val generators = BlocGeneratorFactory.getBlocGenerators(name, true)
-//            generate(generators)
-//        }
-//    }
+    override fun onGenerateBlocClicked(pageName: String?) {
+        pageName?.let { name ->
+            val generators = BlocGeneratorFactory.getBlocGenerators(name, true)
+            generate(generators)
+        }
+    }
+
     override fun update(e: AnActionEvent) {
         e.dataContext.let {
             this.dataContext = it
@@ -35,6 +35,7 @@ open class GeneratePageAction : AnAction()/*, GeneratePageDialog.Listener*/ {
             presentation.isEnabled = true
         }
     }
+
     protected fun generate(mainSourceGenerators: List<BlocGenerator>) {
         val project = CommonDataKeys.PROJECT.getData(dataContext)
         val view = LangDataKeys.IDE_VIEW.getData(dataContext)
@@ -43,7 +44,7 @@ open class GeneratePageAction : AnAction()/*, GeneratePageDialog.Listener*/ {
             CommandProcessor.getInstance().executeCommand(
                 project, {
                     mainSourceGenerators.forEach { createSourceFile(project!!, it, directory!!) }
-                }, "Generate a new Bloc", null
+                }, "Generate a new Page", null
             )
         }
     }

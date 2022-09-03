@@ -1,4 +1,4 @@
-package it.thoson.nwsflutter.actions;
+package it.thoson.nwsflutter.dialog;
 
 import com.intellij.openapi.ui.DialogWrapper;
 import org.jetbrains.annotations.Nullable;
