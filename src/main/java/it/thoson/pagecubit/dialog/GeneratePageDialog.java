@@ -12,7 +12,7 @@ public class GeneratePageDialog extends DialogWrapper {
     private JPanel contentPanel;
 
     public GeneratePageDialog(final Listener listener) {
-        super(null);
+        super(false);
         this.listener = listener;
         init();
     }

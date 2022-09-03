@@ -1,7 +1,10 @@
 plugins {
+    // Java support
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.7.10"
-    id("org.jetbrains.intellij") version "1.8.1"
+    // Kotlin support
+    id("org.jetbrains.kotlin.jvm") version "1.7.20-Beta"
+    // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
+    id("org.jetbrains.intellij") version "1.9.0"
 }
 
 group = "it.thoson"
@@ -14,7 +17,7 @@ repositories {
 // Configure Gradle IntelliJ Plugin
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
-    version.set("2021.3")
+    version.set("2022.1.1")
     type.set("IC") // Target IDE Platform
 
     plugins.set(listOf("com.intellij.java"))
@@ -31,8 +34,8 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("213")
-        untilBuild.set("223.*")
+        sinceBuild.set("*")
+        untilBuild.set("231.*")
     }
 
     signPlugin {
