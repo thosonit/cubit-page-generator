@@ -1,11 +1,11 @@
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.6.20"
-    id("org.jetbrains.intellij") version "1.9.0"
+    id("org.jetbrains.kotlin.jvm") version "1.7.10"
+    id("org.jetbrains.intellij") version "1.8.1"
 }
 
 group = "it.thoson"
-version = "1.0-SNAPSHOT"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -54,4 +54,5 @@ apply(plugin = "idea")
 
 dependencies {
     implementation("com.fleshgrinder.kotlin:case-format:0.2.0")
+    implementation("org.jetbrains:marketplace-zip-signer:0.1.8")
 }
