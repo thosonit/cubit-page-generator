@@ -2,7 +2,7 @@ plugins {
     // Java support
     id("java")
     // Kotlin support
-    id("org.jetbrains.kotlin.jvm") version "1.7.20-Beta"
+    id("org.jetbrains.kotlin.jvm") version "1.7.10"
     // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
     id("org.jetbrains.intellij") version "1.9.0"
 }
@@ -17,8 +17,8 @@ repositories {
 // Configure Gradle IntelliJ Plugin
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
-    version.set("2022.1.1")
-    type.set("IC") // Target IDE Platform
+    version.set("2022.2.1")
+    type.set("IU") // Target IDE Platform
 
     plugins.set(listOf("com.intellij.java"))
 }
@@ -34,7 +34,7 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("*")
+        sinceBuild.set("221.0000")
         untilBuild.set("231.*")
     }
 
