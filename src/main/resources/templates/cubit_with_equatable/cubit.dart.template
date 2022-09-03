@@ -1,8 +1,19 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
 part '${cubit_snake_case}_state.dart';
 
 class ${cubit_pascal_case}Cubit extends Cubit<${cubit_pascal_case}State> {
-  ${cubit_pascal_case}Cubit() : super(${cubit_pascal_case}Initial());
+  ${cubit_pascal_case}Cubit() : super(const ${cubit_pascal_case}State());
+
+  Future<void> loadInitialData() async {
+    emit(state.copyWith(loadDataStatus: LoadStatus.initial));
+    try {
+      //Todo: add API calls
+      emit(state.copyWith(loadDataStatus: LoadStatus.success));
+    } catch (e, s) {
+      //Todo: should print exception here
+      emit(state.copyWith(loadDataStatus: LoadStatus.failure));
+    }
+  }
 }

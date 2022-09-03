@@ -26,7 +26,7 @@ public class GeneratePageDialog extends DialogWrapper {
     @Override
     protected void doOKAction() {
         super.doOKAction();
-        this.listener.onGenerateBlocClicked(pageNameTextField.getText());
+        this.listener.onGeneratePageClicked(pageNameTextField.getText());
     }
 
     @Nullable
@@ -36,6 +36,6 @@ public class GeneratePageDialog extends DialogWrapper {
     }
 
     public interface Listener {
-        void onGenerateBlocClicked(String pageName);
+        void onGeneratePageClicked(String pageName);
     }
 }

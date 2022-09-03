@@ -9,8 +9,8 @@ import com.intellij.psi.PsiDocumentManager
 import com.intellij.psi.PsiFileFactory
 import com.intellij.lang.java.JavaLanguage
 import it.thoson.nwsflutter.dialog.GeneratePageDialog
-import it.thoson.nwsflutter.generator.BlocGenerator
-import it.thoson.nwsflutter.generator.BlocGeneratorFactory
+import it.thoson.nwsflutter.generator.CubitGenerator
+import it.thoson.nwsflutter.generator.CubitGeneratorFactory
 
 open class GeneratePageAction : AnAction(), GeneratePageDialog.Listener {
 
@@ -21,9 +21,9 @@ open class GeneratePageAction : AnAction(), GeneratePageDialog.Listener {
         dialog.show()
     }
 
-    override fun onGenerateBlocClicked(pageName: String?) {
+    override fun onGeneratePageClicked(pageName: String?) {
         pageName?.let { name ->
-            val generators = BlocGeneratorFactory.getBlocGenerators(name, true)
+            val generators = CubitGeneratorFactory.getCubitGenerators(name, true)
             generate(generators)
         }
     }
@@ -36,7 +36,7 @@ open class GeneratePageAction : AnAction(), GeneratePageDialog.Listener {
         }
     }
 
-    protected fun generate(mainSourceGenerators: List<BlocGenerator>) {
+    private fun generate(mainSourceGenerators: List<CubitGenerator>) {
         val project = CommonDataKeys.PROJECT.getData(dataContext)
         val view = LangDataKeys.IDE_VIEW.getData(dataContext)
         val directory = view?.orChooseDirectory
@@ -49,7 +49,7 @@ open class GeneratePageAction : AnAction(), GeneratePageDialog.Listener {
         }
     }
 
-    private fun createSourceFile(project: Project, generator: BlocGenerator, directory: PsiDirectory) {
+    private fun createSourceFile(project: Project, generator: CubitGenerator, directory: PsiDirectory) {
         val fileName = generator.fileName()
         val existingPsiFile = directory.findFile(fileName)
         if (existingPsiFile != null) {

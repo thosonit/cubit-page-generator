@@ -1,0 +1,54 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '${cubit_snake_case}_cubit.dart';
+
+class ${cubit_pascal_case}Arguments {
+  String param;
+
+  ${cubit_pascal_case}Arguments({
+    required this.param,
+  });
+}
+
+class ${cubit_pascal_case}Page extends StatelessWidget {
+  final ${cubit_pascal_case}Arguments arguments;
+
+  const ${cubit_pascal_case}Page({
+    Key? key,
+    required this.arguments,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) {
+        return ${cubit_pascal_case}Cubit();
+      },
+      child: const ${cubit_pascal_case}ChildPage(),
+    );
+  }
+}
+
+class ${cubit_pascal_case}ChildPage extends StatefulWidget {
+  const ${cubit_pascal_case}ChildPage({Key? key}) : super(key: key);
+
+  @override
+  State<${cubit_pascal_case}ChildPage> createState() => _${cubit_pascal_case}ChildPageState();
+}
+
+class _${cubit_pascal_case}ChildPageState extends State<${cubit_pascal_case}ChildPage> {
+  late final ${cubit_pascal_case}Cubit _cubit;
+
+  @override
+  void initState() {
+    super.initState();
+    _cubit = BlocProvider.of(context);
+    _cubit.loadInitialData();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
