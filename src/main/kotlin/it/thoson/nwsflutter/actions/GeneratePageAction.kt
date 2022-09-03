@@ -1,16 +1,21 @@
 package it.thoson.nwsflutter.actions
 
+import com.fleshgrinder.extensions.kotlin.toLowerSnakeCase
+import com.intellij.lang.java.JavaLanguage
 import com.intellij.openapi.actionSystem.*
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.command.CommandProcessor
 import com.intellij.openapi.project.Project
+import com.intellij.openapi.vfs.VfsUtil
+import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.PsiDirectory
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.psi.PsiFileFactory
-import com.intellij.lang.java.JavaLanguage
+import com.intellij.psi.impl.file.PsiDirectoryFactory
 import it.thoson.nwsflutter.dialog.GeneratePageDialog
 import it.thoson.nwsflutter.generator.CubitGenerator
 import it.thoson.nwsflutter.generator.CubitGeneratorFactory
+import it.thoson.nwsflutter.generator.components.StuffGenerator
 
 open class GeneratePageAction : AnAction(), GeneratePageDialog.Listener {
 
@@ -24,7 +29,7 @@ open class GeneratePageAction : AnAction(), GeneratePageDialog.Listener {
     override fun onGeneratePageClicked(pageName: String?) {
         pageName?.let { name ->
             val generators = CubitGeneratorFactory.getCubitGenerators(name, true)
-            generate(generators)
+            generate(pageName.toLowerSnakeCase(), generators)
         }
     }
 
@@ -36,14 +41,17 @@ open class GeneratePageAction : AnAction(), GeneratePageDialog.Listener {
         }
     }
 
-    private fun generate(mainSourceGenerators: List<CubitGenerator>) {
+    private fun generate(pageName: String, mainSourceGenerators: List<CubitGenerator>) {
         val project = CommonDataKeys.PROJECT.getData(dataContext)
         val view = LangDataKeys.IDE_VIEW.getData(dataContext)
         val directory = view?.orChooseDirectory
+
+        val newDirectory = directory?.createSubdirectory(pageName)
+
         ApplicationManager.getApplication().runWriteAction {
             CommandProcessor.getInstance().executeCommand(
                 project, {
-                    mainSourceGenerators.forEach { createSourceFile(project!!, it, directory!!) }
+                    mainSourceGenerators.forEach { createSourceFile(project!!, it, newDirectory!!) }
                 }, "Generate a new Page", null
             )
         }
@@ -59,6 +67,12 @@ open class GeneratePageAction : AnAction(), GeneratePageDialog.Listener {
         }
         val psiFile = PsiFileFactory.getInstance(project)
             .createFileFromText(fileName, JavaLanguage.INSTANCE, generator.generate())
-        directory.add(psiFile)
+        if (generator is StuffGenerator) {
+            //Todo: fix tạm :(
+            val newDirectory = directory.createSubdirectory("widgets")
+            newDirectory.add(psiFile);
+        } else {
+            directory.add(psiFile)
+        }
     }
 }
