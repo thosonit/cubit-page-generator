@@ -1,0 +1,4 @@
+#Build command:
+```
+gradle buildPlugin
+```
