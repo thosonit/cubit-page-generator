@@ -14,9 +14,22 @@
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-    A plugin to create a Page Template with Flutter Cubit
+    A plugin to create a Page Template with Flutter Cubit.
+    A template contain:
+        [page_name]
+            |___widgets
+            |   |___custom_widget.dart
+            |___[page_name]_cubit.dart
+            |___[page_name]_page.dart
+            |___[page_name]_state.dart
   ]]></description>
 
+    <change-notes><![CDATA[
+        <ul>
+          <li>v1.0.0 - Initial release</li>
+        </ul>
+        ]]>
+    </change-notes>
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
