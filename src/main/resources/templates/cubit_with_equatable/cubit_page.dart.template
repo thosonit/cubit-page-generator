@@ -49,6 +49,21 @@ class _${cubit_pascal_case}ChildPageState extends State<${cubit_pascal_case}Chil
 
   @override
   Widget build(BuildContext context) {
+     return Scaffold(
+       appBar: AppBar(),
+       body: SafeArea(
+         child: _buildBodyWidget(),
+       ),
+     );
+  }
+
+  Widget _buildBodyWidget() {
     return Container();
+  }
+
+  @override
+  void dispose() {
+    _cubit.close();
+    super.dispose();
   }
 }
