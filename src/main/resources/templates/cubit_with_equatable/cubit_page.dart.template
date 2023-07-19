@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '${cubit_snake_case}_cubit.dart';
+import '${cubit_snake_case}_navigator.dart';
 
 class ${cubit_pascal_case}Arguments {
   String param;
@@ -23,7 +24,9 @@ class ${cubit_pascal_case}Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        return ${cubit_pascal_case}Cubit();
+        return ${cubit_pascal_case}Cubit(
+          navigator: ${cubit_pascal_case}Navigator(context: context),
+        );
       },
       child: const ${cubit_pascal_case}ChildPage(),
     );

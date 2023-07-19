@@ -1,0 +1,9 @@
+import 'package:flutter/material.dart';
+
+class ${cubit_pascal_case}Navigator extends AppNavigator {
+  ${cubit_pascal_case}Navigator({required BuildContext context}) : super(context: context);
+
+  void openPage() {
+    //Todo
+  }
+}

@@ -1,10 +1,16 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
+import '${cubit_snake_case}_navigator.dart';
+
 part '${cubit_snake_case}_state.dart';
 
 class ${cubit_pascal_case}Cubit extends Cubit<${cubit_pascal_case}State> {
-  ${cubit_pascal_case}Cubit() : super(const ${cubit_pascal_case}State());
+  final ${cubit_pascal_case}Navigator navigator;
+
+  ${cubit_pascal_case}Cubit({
+    required this.navigator,
+  }) : super(const ${cubit_pascal_case}State());
 
   Future<void> loadInitialData() async {
     emit(state.copyWith(loadDataStatus: LoadStatus.initial));
