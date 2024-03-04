@@ -4,11 +4,11 @@ plugins {
     // Kotlin support
     id("org.jetbrains.kotlin.jvm") version "1.7.10"
     // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
-    id("org.jetbrains.intellij") version "1.9.0"
+    id("org.jetbrains.intellij") version "1.17.2"
 }
 
 group = "it.thoson"
-version = "1.2.0"
+version = "1.2.1"
 
 repositories {
     mavenCentral()
@@ -35,7 +35,7 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("192.*")
-        untilBuild.set("231.*")
+        untilBuild.set("")
     }
 
     signPlugin {
