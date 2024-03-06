@@ -43,9 +43,8 @@ open class GeneratePageAction : AnAction(), GeneratePageDialog.Listener {
         val view = LangDataKeys.IDE_VIEW.getData(dataContext)
         val directory = view?.orChooseDirectory
 
-        val newDirectory = directory?.createSubdirectory(pageName)
-
         ApplicationManager.getApplication().runWriteAction {
+            val newDirectory = directory?.createSubdirectory(pageName)
             CommandProcessor.getInstance().executeCommand(
                 project, {
                     mainSourceGenerators.forEach { createSourceFile(project!!, it, newDirectory!!) }
